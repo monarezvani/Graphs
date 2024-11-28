@@ -1,4 +1,5 @@
 import { Graph } from "../lib/types";
+import { v4 as uuidv4 } from "uuid";
 
 // Initialize mock graph data
 let graphs: Graph[] = [
@@ -76,9 +77,9 @@ export const deleteGraphById = async (id: string): Promise<void> => {
 export const createGraph = async (name: string): Promise<Graph> => {
     return new Promise(resolve => {
         const newGraph: Graph = {
-            id: Date.now().toString(),
-            data: { nodes: [], edges: [] },
+            id: uuidv4(),
             name,
+            data: { nodes: [], edges: [] },
         };
 
         graphs.push(newGraph);
